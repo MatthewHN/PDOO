@@ -3,12 +3,12 @@ public class Weapon {
     private final float power;
     private int uses;
 
-    public Weapon (float power, int uses){
+    public Weapon(float power, int uses) {
         this.power = power;
         this.uses = uses;
     }
 
-    public float attack (){
+    public float attack() {
         if (uses > 0) {
             uses--;
             return power;
@@ -17,7 +17,7 @@ public class Weapon {
             return 0;
     }
 
-    public String toString(){
+    public String toString() {
         return "W[" + power + ", " + uses + "]";
     }
 }
