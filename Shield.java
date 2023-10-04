@@ -12,13 +12,16 @@ public class Shield {
         if (uses > 0) {
             uses--;
             return protection;
-        }
-        else
+        } else
             return 0;
     }
 
     public String toString() {
         return "S[" + protection + ", " + uses + "]";
+    }
+
+    public boolean discard(Dice dice) {
+        return dice.discardElement(uses);
     }
 
 }

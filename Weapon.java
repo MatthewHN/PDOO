@@ -12,12 +12,15 @@ public class Weapon {
         if (uses > 0) {
             uses--;
             return power;
-        }
-        else
+        } else
             return 0;
     }
 
     public String toString() {
         return "W[" + power + ", " + uses + "]";
+    }
+
+    public boolean discard(Dice dice) {
+        return dice.discardElement(uses);
     }
 }
