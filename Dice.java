@@ -61,7 +61,7 @@ public class Dice {
         return generator.nextFloat(competence);
     }
 
-    public boolean discardElement(int usesLeft) {
+    public boolean discardElement(float usesLeft) {
         float probability = 1 - (usesLeft / MAX_USES);
         return generator.nextFloat() < probability;
     }
