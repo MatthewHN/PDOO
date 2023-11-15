@@ -40,4 +40,23 @@ public class GameState {
     public String getLog() {
         return log;
     }
+
+    public String toString(){
+        String aux = "";
+
+        aux += getLabyrinth();
+        aux += "\n";
+        aux += getPlayers();
+        aux += "\n";
+        aux += getMonsters();
+        aux += "\n";
+        aux += getCurrentPlayer();
+        aux += "\n";
+        aux += isWinner();
+        aux += "\n";
+        aux += getLog();
+        aux += "\n";
+
+        return aux;
+    }
 }
