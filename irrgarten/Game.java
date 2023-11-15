@@ -33,7 +33,34 @@ public class Game {
     }
 
     public boolean nextStep(Directions preferredDirections){
-        throw new UnsupportedOperationException();
+        boolean dead = this.currentPlayer.dead();
+        if (!dead) {
+            Directions direction = this.actualDirection(preferredDirections);
+
+            if (direction != preferredDirections) {
+                this.logPlayerNoOrders();
+            }
+
+            Monster monster = this.labyrinth.putPlayer(direction, currentPlayer);
+
+            if (monster == null) {
+                this.logNoMonster();
+            } else {
+                GameCharacter winner = this.combat(monster);
+                this.manageReward(winner);
+            }
+        }
+        else {
+            this.manageResurrection();
+        }
+
+        boolean endGame = this.finished();
+
+        if (!endGame) {
+            this.nextPlayer();
+        }
+
+        return endGame;
     }
 
     public GameState getGameState(){
