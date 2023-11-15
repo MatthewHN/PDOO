@@ -129,7 +129,7 @@ public class Labyrinth {
 
         // ...hacia la izquierda
         if (canStepOn(row, col - 1)){
-            validDirections.add(Directions.LEFT)
+            validDirections.add(Directions.LEFT);
         }
 
         //Convertir la lista de direcciones válidas a un array y devolverlo
