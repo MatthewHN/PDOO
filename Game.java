@@ -60,7 +60,7 @@ public class Game {
                     labyrinth.addMonster(row, col, new Monster("monstruo", Dice.randomIntelligence(), Dice.randomStrength()));
                 } else if (laberinto[row][col] == 'E') {
                     // Establece la casilla de salida en la posición (row, col)
-                    labyrinth.setExit(row, col);
+                    labyrinth.setExit(row,col);
                 } else if (laberinto[row][col] == 'X') {
                     // Agrega un bloque en la posición (row, col) con orientación aleatoria entre vertical y horizontal
 
