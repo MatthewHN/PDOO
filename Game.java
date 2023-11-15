@@ -53,15 +53,14 @@ public class Game {
         };
 
         // Configura el laberinto
-        for (int row = 0; row < labyrinth.getNRows(); row++) {
-            for (int col = 0; col < labyrinth.getNCols(); col++) {
+        for (int row = 0; row < labyrinth.getnRows(); row++) {
+            for (int col = 0; col < labyrinth.getnCols(); col++) {
                 if (laberinto[row][col] == 'M') {
                     // Agrega un monstruo en la posición (row, col)
                     labyrinth.addMonster(row, col, new Monster("monstruo", Dice.randomIntelligence(), Dice.randomStrength()));
                 } else if (laberinto[row][col] == 'E') {
                     // Establece la casilla de salida en la posición (row, col)
-                    labyrinth.setExitRow(row);
-                    labyrinth.setExitCol(col);
+                    labyrinth.setExit(row, col);
                 } else if (laberinto[row][col] == 'X') {
                     // Agrega un bloque en la posición (row, col) con orientación aleatoria entre vertical y horizontal
 

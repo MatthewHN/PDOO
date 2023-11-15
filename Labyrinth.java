@@ -32,6 +32,13 @@ public class Labyrinth {
         squares[exitRow][exitCol].setContent(EXIT_CHAR);
     }
 
+    public int getnRows(){return this.nRows;}
+    public int getnCols(){return this.nCols;}
+    public void setExit(int row, int col){
+        this.exitRow = row;
+        this.exitCol = col;
+    }
+
     public void spreadPlayers(ArrayList<Player> players){
         for (Player p : players){
             //Encontrar una posición vacía aleatoria
