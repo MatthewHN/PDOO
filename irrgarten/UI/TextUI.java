@@ -49,7 +49,9 @@ public class TextUI {
         return direction;
     }
     
-    public void showGame(GameState gameState) {   
+    public void showGame(GameState gameState) {
+        // Plasmar la información del estado del juego en la consola
+        System.out.println(gameState.toString());
     }
     
 }
