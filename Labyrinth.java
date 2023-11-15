@@ -102,27 +102,59 @@ public class Labyrinth {
     }
 
     private boolean exitPos(int row, int col){
-
+        return row == exitRow && col == exitCol;
     }
 
     private boolean combatPos (int row, int col){
+        if (!posOK(row,col)){return false;}
 
+        return monsterPositions[row][col] != null && monsterPositions[row][col].hasMonster() &&
+                (playerPositions[row][col] != null && playerPositions[row][col].hasPlayer());
     }
 
-    private boolean canStep(int row, int col){
+    private boolean canStepOn(int row, int col){
+        if (!posOK(row,col)){return false;}
 
+        return emptyPos(row,col) || monsterPos(row,col) || exitPos(row,col);
     }
 
     private void updateOldPos(int row, int col){
+        if (!posOK(row,col)){return;}
+
+        if (combatPos(row,col)){
+            playerPositions[row][col] = null;
+        } else {
+            playerPositions[row][col] = null;
+            monsterPositions[row][col] =null;
+        }
 
     }
 
     private int[] dir2Pos(int row, int col, Directions direction){
-
+        switch (direction){
+            case LEFT:
+                return new int[] {row, col - 1};
+            case RIGHT:
+                return new int[] {row, col + 1};
+            case UP:
+                return new int[] {row - 1, col};
+            case DOWN:
+                return new int[] {row + 1, col};
+            default:
+                return new int[] {row, col};
+        }
     }
 
     private int[] randomEmptyPos(){
+        int row, col;
 
+        do {
+            //Generar una posición aleatoria dentro del rango
+            row = Dice.randomPos(nRows);
+            col = Dice.randomPos(nCols);
+        } while (!emptyPos(row, col));
+
+        return new int[] {row, col};
     }
 
     private Monster putPlayer2D(int oldRow, int oldCol, int row, int col, Player player){
