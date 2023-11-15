@@ -1,3 +1,5 @@
+package irrgarten;
+
 public class Weapon {
 
     private final float power;

@@ -1,3 +1,5 @@
+package irrgarten;
+
 public class Monster {
     private final static int INITIAL_HEALTH = 5;
     private final String name;

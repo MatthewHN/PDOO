@@ -1,3 +1,5 @@
+package irrgarten;
+
 import java.util.ArrayList;
 
 public class Labyrinth {
@@ -62,7 +64,7 @@ public class Labyrinth {
             for (int j=0; j<nCols; j++){
                 if (i==exitRow && j== exitCol){sb.append(EXIT_CHAR);}
                 else if (playerPositions[i][j] != null && playerPositions[i][j].hasPlayer()) {
-                    sb.append('P'); //Player
+                    sb.append('P'); //irrgarten.Player
                 } else if (playerPositions[i][j] != null && monsterPositions[i][j].hasMonster()) {
                     sb.append(MONSTER_CHAR); //Monstruo
                 } else if (squares[i][j].isBlocked()) {

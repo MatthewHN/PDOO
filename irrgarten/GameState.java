@@ -1,3 +1,5 @@
+package irrgarten;
+
 public class GameState {
     private final String labyrinth;
     private final String players;

@@ -1,3 +1,5 @@
+package irrgarten;
+
 public class Shield {
 
     private final float protection;

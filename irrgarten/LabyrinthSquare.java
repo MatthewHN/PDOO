@@ -1,3 +1,5 @@
+package irrgarten;
+
 public class LabyrinthSquare {
     private int row;
     private int col;

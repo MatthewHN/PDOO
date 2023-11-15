@@ -1,3 +1,5 @@
+package irrgarten;
+
 import java.util.ArrayList;
 
 public class Player {
@@ -27,7 +29,7 @@ public class Player {
         shields = new ArrayList<>(MAX_SHIELDS);
         row = 0;
         col = 0;
-        this.name = "Player # " + number;
+        this.name = "irrgarten.Player # " + number;
     }
 
     public void resurrect() {
@@ -110,7 +112,7 @@ public class Player {
 
     public String toString() {
 
-        return "Player{name='" + name +
+        return "irrgarten.Player{name='" + name +
                 "', number=" + number +
                 ", intelligence=" + intelligence +
                 ", strength=" + strength +
