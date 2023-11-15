@@ -24,7 +24,6 @@ public class TestP1 {
             System.out.println("Intensity: " + prueba.intensity(9.8F));
             System.out.println("Discard element: " + prueba.discardElement(1));
         }
-
     }
 }
 

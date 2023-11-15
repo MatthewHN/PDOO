@@ -18,7 +18,7 @@ public class Monster {
     }
 
     public float attack() {
-        return (new Dice()).intensity(strength);
+        return Dice.intensity(strength);
     }
 
     public void setPos(int row, int col) {
