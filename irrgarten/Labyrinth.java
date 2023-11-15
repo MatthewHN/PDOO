@@ -29,7 +29,7 @@ public class Labyrinth {
         squares = new LabyrinthSquare[nRows][nCols];
         for (int i=0; i<nRows; i++){
             for (int j=0; j<nCols; j++){
-                squares[i][j] = new LabyrinthSquare(i,j,' ');
+                squares[i][j] = new LabyrinthSquare(i,j,EMPTY_CHAR);
             }
         }
         squares[exitRow][exitCol].setContent(EXIT_CHAR);
@@ -151,7 +151,11 @@ public class Labyrinth {
     }
 
     private boolean emptyPos(int row, int col){
-        return monsterPositions[row][col] == null && playerPositions[row][col] == null;
+        if (!posOK(row, col)){
+            return false;
+        }
+
+    return squares[row][col].getContent() == EMPTY_CHAR;
     }
 
     private boolean monsterPos(int row, int col){
