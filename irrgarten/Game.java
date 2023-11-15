@@ -9,7 +9,7 @@ public class Game {
     private ArrayList<Monster> monsters;
     private ArrayList<Player> players;
     private Player currentPlayer = new Player('0',Dice.randomIntelligence(), Dice.randomStrength());
-    private Labyrinth labyrinth = new Labyrinth(10,20,10,18);
+    private Labyrinth labyrinth = new Labyrinth(10,20,9,17);
 
     public Game(int nplayers){
         // Inicializar la lista de jugadores y monstruos
@@ -93,7 +93,7 @@ public class Game {
     private Directions actualDirection(Directions preferredDirection){
         int currentRow = this.currentPlayer.getRow();
         int currentCol = this.currentPlayer.getCol();
-        Directions[] validMoves = labyrinth.validMoves(currentRow, currentCol);
+        Directions[] validMoves = labyrinth.validMoves(currentRow, currentCol).toArray(new Directions[0]);
 
         return this.currentPlayer.move(preferredDirection, validMoves); 
     }
