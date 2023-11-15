@@ -2,6 +2,7 @@ import java.util.ArrayList;
 
 public class Labyrinth {
     private static final char BLOCK_CHAR = 'X';
+    private static final char MONSTER_CHAR = 'M';
     private static final char EMPTY_CHAR = '-';
     private static final char COMBAT_CHAR = 'C';
     private static final char EXIT_CHAR = 'E';
@@ -63,7 +64,7 @@ public class Labyrinth {
                 else if (playerPositions[i][j] != null && playerPositions[i][j].hasPlayer()) {
                     sb.append('P'); //Player
                 } else if (playerPositions[i][j] != null && monsterPositions[i][j].hasMonster()) {
-                    sb.append('M'); //Monstruo
+                    sb.append(MONSTER_CHAR); //Monstruo
                 } else if (squares[i][j].isBlocked()) {
                     sb.append(BLOCK_CHAR);
                 }
