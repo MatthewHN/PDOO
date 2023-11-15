@@ -41,12 +41,17 @@ public class Player {
         return this.row;
     }
 
+
     public int getCol() {
         return this.col;
     }
 
     public char getNumber() {
         return this.number;
+    }
+
+    public String getName() {
+        return this.name;
     }
 
     public void setPos(int row, int col) {
@@ -155,5 +160,6 @@ public class Player {
     private void incConsecutiveHits() {
         consecutiveHits++;
     }
+
 
 }
