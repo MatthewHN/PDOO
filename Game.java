@@ -60,7 +60,7 @@ public class Game {
                     labyrinth.addMonster(row, col, new Monster("monstruo", Dice.randomIntelligence(), Dice.randomStrength()));
                 } else if (laberinto[row][col] == 'E') {
                     // Establece la casilla de salida en la posición (row, col)
-                    labyrinth.setExit(row,col);
+                    labyrinth.setExit(row, col);
                 } else if (laberinto[row][col] == 'X') {
                     // Agrega un bloque en la posición (row, col) con orientación aleatoria entre vertical y horizontal
 
@@ -89,19 +89,59 @@ public class Game {
     }
 
     private Directions actualDirection(Directions preferredDirection){
-        throw new UnsupportedOperationException();
+        int currentRow = this.currentPlayer.getRow();
+        int currentCol = this.currentPlayer.getCol();
+        Directions[] validMoves = labyrinth.validMoves(currentRow, currentCol);
+
+        return this.currentPlayer.move(preferredDirection, validMoves); 
     }
 
     private GameCharacter combat(Monster monster){
-        throw new UnsupportedOperationException();
+        int rounds = 0;
+        GameCharacter winner = GameCharacter.PLAYER;
+
+        float playerAttack = this.currentPlayer.attack();
+        boolean lose = monster.defend(playerAttack);
+
+        while ((!lose) && (rounds < MAX_ROUNDS)){
+            winner = GameCharacter.MONSTER;
+            rounds++;
+
+            float monsterAttack = monster.attack();
+            lose = this.currentPlayer.defend(monsterAttack);
+
+            if (!lose) {
+                playerAttack = this.currentPlayer.attack();
+                winner = GameCharacter.PLAYER;
+                lose = monster.defend(playerAttack);
+            }
+        }
+
+        this.logRounds(rounds, MAX_ROUNDS);
+
+        return winner;
     }
 
     private void manageReward(GameCharacter winner){
-        throw new UnsupportedOperationException();
+        if (winner == GameCharacter.PLAYER){
+            this.currentPlayer.receiveReward();
+            this.logPlayerWon();
+        }
+        else{
+            this.logMonsterWon();
+        }
     }
 
     private void manageResurrection(){
-        throw new UnsupportedOperationException();
+        boolean resurrect = Dice.resurrectPlayer();
+
+        if (resurrect){
+            this.currentPlayer.resurrect();
+            this.logResurrected();
+        }
+        else{
+            this.logPlayerSkipTurn();
+        }
     }
 
     private void logPlayerWon(){
