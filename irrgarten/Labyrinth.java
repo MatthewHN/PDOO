@@ -24,9 +24,9 @@ public class Labyrinth {
         this.nCols = nCols;
         this.exitRow = exitRow;
         this.exitCol = exitCol;
-        monsters = new Monster[nRows][nCols];
-        players = new Player[nRows][nCols];
-        labyrinth = new char[nRows][nCols];
+        this.monsters = new Monster[nRows][nCols];
+        this.players = new Player[nRows][nCols];
+        this.labyrinth = new char[nRows][nCols];
 
         for(int i=0; i < nRows; i++){
             for(int j=0; j < nCols; j++){
