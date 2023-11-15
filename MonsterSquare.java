@@ -12,4 +12,8 @@ public class MonsterSquare {
         return monster != null;
     }
 
+    public Monster getMonster(){
+        return monster;
+    }
+
 }
