@@ -20,8 +20,8 @@ public class Shield {
         return "S[" + protection + ", " + uses + "]";
     }
 
-    public boolean discard(Dice dice) {
-        return dice.discardElement(uses);
+    public boolean discard() {
+        return uses <=0;
     }
 
 }

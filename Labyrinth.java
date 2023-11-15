@@ -8,14 +8,14 @@ public class Labyrinth {
     private static final char EXIT_CHAR = 'E';
     private static final int ROW = 0;
     private static final int COL = 1;
-    private int nRows;
-    private int nCols;
+    private final int nRows;
+    private final int nCols;
     private int exitRow;
     private int exitCol;
 
-    private LabyrinthSquare[][] squares;
-    private PlayerSquare[][] playerPositions;
-    private MonsterSquare[][] monsterPositions;
+    private static LabyrinthSquare[][] squares;
+    private static PlayerSquare[][] playerPositions;
+    private static MonsterSquare[][] monsterPositions;
 
     public Labyrinth(int nRows, int nCols, int exitRow, int exitCol){
         this.nRows=nRows;

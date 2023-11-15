@@ -65,7 +65,21 @@ public class Player {
     }
 
     public Directions move(Directions direction, Directions[] validMoves) {
-        throw new UnsupportedOperationException();
+        if(validMoves.length > 0 && !contains(validMoves, direction)){
+            return validMoves[0];
+        } else {
+            return direction;
+        }
+    }
+
+    //metodo auxiliar para ver si un array contiene un elemento específico
+    private boolean contains(Directions[] directions, Directions direction){
+        for (Directions d : directions){
+            if (d==direction){
+                return true;
+            }
+        }
+        return false;
     }
 
     public float attack() {
@@ -78,7 +92,20 @@ public class Player {
     }
 
     public void receiveReward() {
-        throw new UnsupportedOperationException();
+        int wReward = Dice.weaponsReward();
+        for (int i=0; i < wReward; i++){
+            Weapon wnew = newWeapon();
+            receiveWeapon(wnew);
+        }
+
+        int sReward = Dice.shieldsReward();
+        for (int i=0; i < sReward; i++){
+            Shield snew = newShield();
+            receiveShield(snew);
+        }
+
+        int extraHealth = Dice.healthReward();
+        health += extraHealth;
     }
 
     public String toString() {
@@ -97,11 +124,30 @@ public class Player {
     }
 
     private void receiveWeapon(Weapon w) {
-        throw new UnsupportedOperationException();
+        for (int i = weapons.size() - 1; i>=0; i--){
+            Weapon wi = weapons.get(i);
+            if (wi.discard()){
+                weapons.remove(wi);
+            }
+        }
+
+        if (weapons.size() < MAX_WEAPONS){
+            weapons.add(w);
+        }
     }
 
     private void receiveShield(Shield s) {
-        throw new UnsupportedOperationException();
+        //Iterar sobre la lista de escudos y descartar los que no se necesiten
+        for (int i = shields.size() - 1; i >= 0; i--){
+            Shield si = shields.get(i);
+            if (si.discard()){
+                shields.remove(si);
+            }
+        }
+
+        if (shields.size() < MAX_SHIELDS){
+            shields.add(s);
+        }
     }
 
     private Weapon newWeapon() {
@@ -146,7 +192,21 @@ public class Player {
     }
 
     private boolean manageHit(float receivedAttack) {
-        throw new UnsupportedOperationException();
+        float defense = defensiveEnergy();
+
+        if (defense < receivedAttack){
+            gotWounded();
+            incConsecutiveHits();
+
+            if (consecutiveHits == HITS2LOSE || dead()){
+                resetHits();
+                return false; //Indica que el jugador ha perdido o muerto
+            }
+        } else {
+            resetHits();
+        }
+
+        return true; //Indica que el jugador sigue en el juego
     }
 
     private void resetHits() {

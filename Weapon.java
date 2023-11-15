@@ -20,7 +20,7 @@ public class Weapon {
         return "W[" + power + ", " + uses + "]";
     }
 
-    public boolean discard(Dice dice) {
-        return dice.discardElement(uses);
+    public boolean discard() {
+        return uses <=0;
     }
 }
