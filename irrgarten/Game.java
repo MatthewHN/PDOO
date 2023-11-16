@@ -68,7 +68,7 @@ public class Game {
     }
 
     private void configureLabyrinth(){
-        Monster m1=new Monster("m1", Dice.randomIntelligence(),Dice.randomStrength());
+        Monster m1=new Monster("Monster 1", Dice.randomIntelligence(),Dice.randomStrength());
         labyrinth.addBlock(Orientation.HORIZONTAL, 2, 1, 1);
         labyrinth.addBlock(Orientation.HORIZONTAL, 2, 2, 1);
         labyrinth.addBlock(Orientation.VERTICAL, 1, 4, 1);

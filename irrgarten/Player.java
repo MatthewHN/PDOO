@@ -29,7 +29,7 @@ public class Player {
         this.shields = new ArrayList<>(MAX_SHIELDS);
         this.row = 0;
         this.col = 0;
-        this.name = "irrgarten.Player # " + number;
+        this.name = "Player # " + number;
     }
 
     public void resurrect() {
@@ -112,7 +112,7 @@ public class Player {
 
     public String toString() {
 
-        return "irrgarten.Player{name='" + name +
+        return "iPlayer{name='" + name +
                 "', number=" + number +
                 ", intelligence=" + intelligence +
                 ", strength=" + strength +

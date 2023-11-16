@@ -13,6 +13,7 @@ public class Monster {
         this.name = name;
         this.intelligence = intelligence;
         this.strength = strength;
+        health = INITIAL_HEALTH;
     }
 
     public boolean dead() {
@@ -29,7 +30,7 @@ public class Monster {
     }
 
     public String toString() {
-        return "Name: " + name + "Intelligence: " + intelligence + "Strentgh: " + strength + "Health: " + health;
+        return "Name: " + name + " Intelligence: " + intelligence + " Strentgh: " + strength + " Health: " + health;
     }
 
     private void gotWounded() {
