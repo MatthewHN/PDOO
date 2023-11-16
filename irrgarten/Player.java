@@ -107,12 +107,12 @@ public class Player {
         }
 
         int extraHealth = Dice.healthReward();
-        health += extraHealth;
+        this.health += extraHealth;
     }
 
     public String toString() {
 
-        return "iPlayer{name='" + name +
+        return "Player{name='" + name +
                 "', number=" + number +
                 ", intelligence=" + intelligence +
                 ", strength=" + strength +
@@ -122,7 +122,7 @@ public class Player {
                 ", consecutiveHits=" + consecutiveHits +
                 ", Weapons=" + weapons.toString() +
                 ", Shields=" + shields.toString() +
-                "}";
+                "}\n";
     }
 
     private void receiveWeapon(Weapon w) {
@@ -190,7 +190,7 @@ public class Player {
 
     private float defensiveEnergy() {
 
-        return intelligence + sumShields();
+        return this.intelligence + sumShields();
     }
 
     private boolean manageHit(float receivedAttack) {
@@ -200,27 +200,27 @@ public class Player {
             gotWounded();
             incConsecutiveHits();
 
-            if (consecutiveHits == HITS2LOSE || dead()){
+            if (this.consecutiveHits == HITS2LOSE || dead()){
                 resetHits();
-                return false; //Indica que el jugador ha perdido o muerto
+                return true; //Indica que el jugador ha perdido o muerto
             }
         } else {
             resetHits();
         }
 
-        return true; //Indica que el jugador sigue en el juego
+        return false; //Indica que el jugador sigue en el juego
     }
 
     private void resetHits() {
-        consecutiveHits = 0;
+        this.consecutiveHits = 0;
     }
 
     private void gotWounded() {
-        health--;
+        this.health--;
     }
 
     private void incConsecutiveHits() {
-        consecutiveHits++;
+        this.consecutiveHits++;
     }
 
 

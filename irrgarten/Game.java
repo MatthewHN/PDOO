@@ -103,6 +103,7 @@ public class Game {
 
         float playerAttack = this.currentPlayer.attack();
         boolean lose = monster.defend(playerAttack);
+        rounds++;
 
         while ((!lose) && (rounds < MAX_ROUNDS)){
             winner = GameCharacter.MONSTER;

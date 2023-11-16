@@ -17,11 +17,11 @@ public class Monster {
     }
 
     public boolean dead() {
-        return health == 0;
+        return this.health <= 0;
     }
 
     public float attack() {
-        return Dice.intensity(strength);
+        return Dice.intensity(this.strength);
     }
 
     public void setPos(int row, int col) {
@@ -30,17 +30,14 @@ public class Monster {
     }
 
     public String toString() {
-        return "Name: " + name + " Intelligence: " + intelligence + " Strentgh: " + strength + " Health: " + health;
+        return "Name: " + this.name + " Intelligence: " + this.intelligence + " Strentgh: " + this.strength + " Health: " + this.health;
     }
 
     private void gotWounded() {
-        health--;
+        this.health--;
     }
 
     public boolean defend(float receivedAttack) {
-        if (dead()){
-            return false; //El monstruo esta muerto
-        }
 
         float defensiveEnergy = Dice.intensity(intelligence);
         if (defensiveEnergy < receivedAttack){
