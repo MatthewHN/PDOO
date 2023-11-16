@@ -27,8 +27,8 @@ public class Player {
         this.health = INITIAL_HEALTH;
         this.weapons = new ArrayList<>(MAX_WEAPONS);
         this.shields = new ArrayList<>(MAX_SHIELDS);
-        this.row = 0;
-        this.col = 0;
+        this.row = 1;
+        this.col = 1;
         this.name = "Player # " + number;
     }
 

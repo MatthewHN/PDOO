@@ -136,7 +136,7 @@ public class Labyrinth {
     }
 
     private boolean posOK(int row, int col){
-        return (row < nRows) && ( col < nCols);
+        return (row < nRows && row>=0) && ( col < nCols && col>=0);
     }
 
     private boolean emptyPos(int row, int col){
@@ -157,7 +157,7 @@ public class Labyrinth {
 
     private boolean canStepOn(int row, int col){
         //No pongo && posOK porque ninguna de esas opciones dará true en una posición invalida)
-        return (this.monsterPos(row, col) || this.emptyPos(row, col) || this.exitPos(row, col)) && this.posOK(row,col);
+        return this.posOK(row,col) && (this.monsterPos(row, col) || this.emptyPos(row, col) || this.exitPos(row, col));
     }
 
     private void updateOldPos(int row, int col){

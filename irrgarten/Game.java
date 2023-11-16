@@ -9,7 +9,7 @@ public class Game {
     private ArrayList<Monster> monsters;
     private ArrayList<Player> players;
     private Player currentPlayer = new Player('0',Dice.randomIntelligence(), Dice.randomStrength());
-    private Labyrinth labyrinth = new Labyrinth(10,20,9,17);
+    private Labyrinth labyrinth = new Labyrinth(5,10,4,9);
 
     public Game(int nplayers){
         // Inicializar la lista de jugadores y monstruos
