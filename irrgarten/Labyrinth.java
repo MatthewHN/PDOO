@@ -31,6 +31,8 @@ public class Labyrinth {
         for(int i=0; i < nRows; i++){
             for(int j=0; j < nCols; j++){
                 labyrinth[i][j] = EMPTY_CHAR;
+                monsters[i][j] = null;
+                players[i][j] = null;
             }
         }
 
@@ -53,7 +55,7 @@ public class Labyrinth {
     public void spreadPlayers(ArrayList<Player> players){
         for (Player p : players) {
             int[] pos = this.randomEmptyPos();
-            this.putPlayer2D(-1, -1, pos[0], pos[1], p);
+            this.putPlayer2D(0, 0, pos[0], pos[1], p);
         }
     }
 

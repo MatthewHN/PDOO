@@ -68,40 +68,12 @@ public class Game {
     }
 
     private void configureLabyrinth(){
-        char[][] laberinto = {
-                {'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
-                {'X', 'M', 'X', 'M', 'X', 'X', 'X', 'M', 'X', 'X', 'X', 'X', 'X', 'X', 'M', 'X', 'X', 'X', 'M', 'X'},
-                {'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'M', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
-                {'X', 'X', 'M', 'X', 'X', 'X', 'X', 'M', 'X', 'M', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
-                {'X', 'X', 'X', 'M', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'M', 'X', 'X', 'X', 'M', 'X', 'X'},
-                {'X', 'M', 'X', 'X', 'X', 'M', 'X', 'M', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
-                {'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'M', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
-                {'X', 'X', 'X', 'M', 'X', 'X', 'M', 'X', 'X', 'X', 'M', 'X', 'X', 'X', 'X', 'M', 'X', 'X', 'X', 'X'},
-                {'X', 'X', 'M', 'X', 'X', 'X', 'X', 'M', 'X', 'M', 'X', 'X', 'X', 'M', 'X', 'X', 'X', 'X', 'M', 'X'},
-                {'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'E', 'X', 'X'}
-        };
-
-        // Configura el laberinto
-        for (int row = 0; row < labyrinth.getnRows(); row++) {
-            for (int col = 0; col < labyrinth.getnCols(); col++) {
-                if (laberinto[row][col] == 'M') {
-                    // Agrega un monstruo en la posición (row, col)
-                    labyrinth.addMonster(row, col, new Monster("monstruo", Dice.randomIntelligence(), Dice.randomStrength()));
-                } else if (laberinto[row][col] == 'E') {
-                    // Establece la casilla de salida en la posición (row, col)
-                    labyrinth.setExit(row, col);
-                } else if (laberinto[row][col] == 'X') {
-                    // Agrega un bloque en la posición (row, col) con orientación aleatoria entre vertical y horizontal
-
-                    int orientation = Dice.randomPos(2); // 0 para horizontal, 1 para vertical
-                    if (orientation == 0) {
-                        labyrinth.addBlock(Orientation.HORIZONTAL, row, col, 1);
-                    } else {
-                        labyrinth.addBlock(Orientation.VERTICAL, row, col, 1);
-                    }
-                }
-            }
-        }
+        Monster m1=new Monster("m1", Dice.randomIntelligence(),Dice.randomStrength());
+        labyrinth.addBlock(Orientation.HORIZONTAL, 2, 1, 1);
+        labyrinth.addBlock(Orientation.HORIZONTAL, 2, 2, 1);
+        labyrinth.addBlock(Orientation.VERTICAL, 1, 4, 1);
+        labyrinth.addMonster(0,1, m1);
+        monsters.add(m1);
     }
 
     private void nextPlayer(){

@@ -25,10 +25,10 @@ public class Player {
         this.intelligence = intelligence;
         this.strength = strength;
         this.health = INITIAL_HEALTH;
-        weapons = new ArrayList<>(MAX_WEAPONS);
-        shields = new ArrayList<>(MAX_SHIELDS);
-        row = 1;
-        col = 1;
+        this.weapons = new ArrayList<>(MAX_WEAPONS);
+        this.shields = new ArrayList<>(MAX_SHIELDS);
+        this.row = 0;
+        this.col = 0;
         this.name = "irrgarten.Player # " + number;
     }
 
