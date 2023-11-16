@@ -36,7 +36,7 @@ public class Player {
         this.weapons.clear(); // Hace que la lista de armas sea una lista vacía
         this.shields.clear(); // Hace que la lista de escudos sea una lista vacía
         this.health = INITIAL_HEALTH; // Restablece la salud al nivel inicial
-        resetHits(); // Restablece el número de golpes consecutivos a cero
+        resetHits(); // Restablece el número de golpes consecutivos a 0
     }
 
     public int getRow() {
