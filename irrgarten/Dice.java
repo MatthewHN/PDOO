@@ -1,6 +1,7 @@
 package irrgarten;
 
 import java.util.Random;
+import java.util.ArrayList;
 
 public class Dice {
 
@@ -66,6 +67,19 @@ public class Dice {
 
     public static int usesLeft() {
         return generator.nextInt(MAX_USES);
+    }
+
+    public static Directions nextStep(Directions preferredDirection, ArrayList<Directions> validDirections, float intelligence) {
+        // Probabilidad basada en la inteligencia para elegir la dirección preferida
+        float probability = Math.min(intelligence / 10.0F, 1.0F); // Asegura que la probabilidad esté entre 0 y 1
+
+        if (generator.nextFloat() < probability && validDirections.contains(preferredDirection)) {
+            // Elige la dirección preferida
+            return preferredDirection;
+        } else {
+            // Elige una dirección aleatoria de las válidas
+            return validDirections.get(generator.nextInt(validDirections.size()));
+        }
     }
 
 }
