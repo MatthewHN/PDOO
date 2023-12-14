@@ -168,7 +168,7 @@ public class Player {
         return new Shield(protection, uses);
     }
 
-    private float sumWeapons() {
+    protected float sumWeapons() {
         float sumWeapons = 0;
 
         // Iterar sobre la lista de armas y sumar el poder de cada arma
@@ -178,7 +178,7 @@ public class Player {
         return sumWeapons;
     }
 
-    private float sumShields() {
+    protected float sumShields() {
         float sumShields = 0;
 
         // Iterar sobre la lista de armas y sumar el poder de cada arma

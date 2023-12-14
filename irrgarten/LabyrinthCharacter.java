@@ -20,34 +20,34 @@ public class LabyrinthCharacter{
 
     public LabyrinthCharacter(LabyrinthCharacter other){
         this.name = other.name;
-        this.intelligence = other.name;
+        this.intelligence = other.intelligence;
         this.strength = other.strength;
         this.health = other.health;
         this.row = other.row;
         this.col = other.col;
     }
 
-    public boolean dead(){}
+    public boolean dead(){return true;}
 
-    public int getRow(){}
+    public int getRow(){return 1;}
 
-    public int getCol(){}
+    public int getCol(){return 1;}
 
-    protected float getIntelligence(){}
+    protected float getIntelligence(){return 1;}
 
-    protected float getStrength(){}
+    protected float getStrength(){return 1;}
 
-    protected float getHealth(){}
+    protected float getHealth(){return 1;}
 
     protected void setHealth(float health){}
 
     public void setPos(int row, int col){}
 
-    public String toString(){}
+    public String toString(String ent){return ent;}
 
     protected void gotWounded(){}
 
-    public float attack(){}
+    public float attack(){return 0;}
 
-    public boolean defend(float attack){}
+    public boolean defend(float attack){return true;}
 }

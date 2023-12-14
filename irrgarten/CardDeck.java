@@ -3,7 +3,7 @@ package irrgarten;
 import java.util.ArrayList;
 public class CardDeck<T> {
 
-    private final ArrayList<T> cardDeck;
+    private ArrayList<T> cardDeck;
 
     public CardDeck(){
         this.cardDeck = new ArrayList<>();
@@ -15,6 +15,6 @@ public class CardDeck<T> {
         this.cardDeck.add(card);
     }
 
-    public T nextCard(T ent){return ent;}
+    //public T nextCard(){}
 
 }
