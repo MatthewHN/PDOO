@@ -11,7 +11,6 @@ module Irrgarten
     @@MAX_ATTACK=3
     @@MAX_SHIELD=2  
     @@generator = Random.new 
-    
 
     #Devuelve número de fila o columna aleatorio siendo el argumento el máximo posible.
     def self.randomPos(max)
