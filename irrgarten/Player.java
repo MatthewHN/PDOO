@@ -2,7 +2,7 @@ package irrgarten;
 
 import java.util.ArrayList;
 
-public class Player {
+public class Player extends LabyrinthCharacter {
     private static final int MAX_WEAPONS = 2;
     private static final int MAX_SHIELDS = 3;
     private static final int INITIAL_HEALTH = 10;
@@ -20,7 +20,7 @@ public class Player {
     private ArrayList<Shield> shields;
 
 
-    public Player(char number, float intelligence, float strength) {
+   /* public Player(char number, float intelligence, float strength) {
         this.number = number;
         this.intelligence = intelligence;
         this.strength = strength;
@@ -30,6 +30,18 @@ public class Player {
         this.row = 1;
         this.col = 1;
         this.name = "Player # " + number;
+    }*/
+
+    public Player(String name, float intelligence, float strength, float health) {
+        super(name, intelligence, strength, health);
+    }
+
+    public Player(Player other) {
+        super(other.name,other.intelligence,other.strength,other.health);
+    }
+
+    public void copyFrom(Player other){
+        super.copyFrom(other);
     }
 
     public void resurrect() {
@@ -75,7 +87,7 @@ public class Player {
     }
 
     //metodo auxiliar para ver si un array contiene un elemento específico
-    private boolean contains(Directions[] directions, Directions direction){
+    public boolean contains(Directions[] directions, Directions direction){
         for (Directions d : directions){
             if (d==direction){
                 return true;
@@ -215,7 +227,7 @@ public class Player {
         this.consecutiveHits = 0;
     }
 
-    private void gotWounded() {
+    public void gotWounded() {
         this.health--;
     }
 

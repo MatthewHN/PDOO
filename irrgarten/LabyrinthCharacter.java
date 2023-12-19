@@ -1,6 +1,6 @@
 package irrgarten;
 
-public class LabyrinthCharacter{
+public abstract class LabyrinthCharacter{
 
     private String name;
     private float intelligence;
@@ -27,27 +27,39 @@ public class LabyrinthCharacter{
         this.col = other.col;
     }
 
-    public boolean dead(){return true;}
+    public void copyFrom(LabyrinthCharacter other){
+        this.name = other.name;
+        this.intelligence = other.intelligence;
+        this.strength = other.strength;
+        this.health = other.health;
+        this.row = other.row;
+        this.col = other.col;
+    }
 
-    public int getRow(){return 1;}
+    public boolean dead(){return health <= 0;}
 
-    public int getCol(){return 1;}
+    public int getRow(){return row;}
 
-    protected float getIntelligence(){return 1;}
+    public int getCol(){return col;}
 
-    protected float getStrength(){return 1;}
+    protected float getIntelligence(){return intelligence;}
 
-    protected float getHealth(){return 1;}
+    protected float getStrength(){return strength;}
 
-    protected void setHealth(float health){}
+    protected float getHealth(){return health;}
 
-    public void setPos(int row, int col){}
+    protected void setHealth(float health){this.health = health;}
 
-    public String toString(String ent){return ent;}
+    public void setPos(int row, int col){this.row = row; this.col = col;}
 
-    protected void gotWounded(){}
+    public String toString(String ent){
+        return "Name: " + name + ", Intelligence: " + intelligence + ", Strength: " + strength +
+                ", Health: " + health + ", Position: (" + row + ", " + col + ")";
+    }
 
-    public float attack(){return 0;}
+    protected abstract void gotWounded();
 
-    public boolean defend(float attack){return true;}
+    public abstract float attack();
+
+    public abstract boolean defend(float attack);
 }

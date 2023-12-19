@@ -1,23 +1,39 @@
 package irrgarten;
 
 public class CombatElement {
+    private float effect; // El efecto del elemento de combate
+    private int uses; // Número de usos disponibles
 
-    private float effect;
-    private int uses;
-
+    /**
+     * Constructor para CombatElement.
+     * @param effect El efecto del elemento de combate.
+     * @param uses El número de usos disponibles.
+     */
     public CombatElement(float effect, int uses) {
         this.effect = effect;
         this.uses = uses;
     }
 
-    protected float produceEffect() {
-        return 0;
-    }
+    /**
+     * Método abstracto para producir un efecto.
+     * @return El valor del efecto producido.
+     */
+    protected float produceEffect(){return 0;}
 
+    /**
+     * Descarta el elemento de combate cuando se agotan los usos.
+     * @return Verdadero si el elemento fue descartado, falso en caso contrario.
+     */
     public boolean discard() {
-        return true;
+        if (uses > 0) {
+            uses--;
+            return uses == 0;
+        }
+        return false;
     }
 
-    public String toString() {return "S[" + effect + ", " + uses + "]";}
-
+    @Override
+    public String toString() {
+        return "Effect: " + effect + ", Uses: " + uses;
+    }
 }

@@ -1,6 +1,6 @@
 package irrgarten;
 
-public class Monster {
+public class Monster extends LabyrinthCharacter{
     private final static int INITIAL_HEALTH = 5;
     private final String name;
     private final float intelligence;
@@ -9,11 +9,18 @@ public class Monster {
     private int row;
     private int col;
 
-    public Monster(String name, float intelligence, float strength) {
+    /*public Monster(String name, float intelligence, float strength) {
         this.name = name;
         this.intelligence = intelligence;
         this.strength = strength;
         health = INITIAL_HEALTH;
+    }*/
+
+    public Monster(String name, float intelligence, float strength, float health, String name1, float intelligence1, float strength1) {
+        super(name, intelligence, strength, health);
+        this.name = name1;
+        this.intelligence = intelligence1;
+        this.strength = strength1;
     }
 
     public boolean dead() {
@@ -33,7 +40,7 @@ public class Monster {
         return "Name: " + this.name + " Intelligence: " + this.intelligence + " Strentgh: " + this.strength + " Health: " + this.health;
     }
 
-    private void gotWounded() {
+    public void gotWounded() {
         this.health--;
     }
 
