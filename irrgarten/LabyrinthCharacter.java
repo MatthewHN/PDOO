@@ -9,7 +9,7 @@ public abstract class LabyrinthCharacter{
     private int row;
     private int col;
 
-    public LabyrinthCharacter(String name, float intelligence, float strength, float health){
+    public LabyrinthCharacter(float intelligence, float strength, float health){
         this.name = name;
         this.intelligence = intelligence;
         this.strength = strength;
@@ -25,6 +25,9 @@ public abstract class LabyrinthCharacter{
         this.health = other.health;
         this.row = other.row;
         this.col = other.col;
+    }
+
+    public LabyrinthCharacter(String name, float intelligence, float strength) {
     }
 
     public void copyFrom(LabyrinthCharacter other){

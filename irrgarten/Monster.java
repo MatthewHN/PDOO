@@ -16,11 +16,11 @@ public class Monster extends LabyrinthCharacter{
         health = INITIAL_HEALTH;
     }*/
 
-    public Monster(String name, float intelligence, float strength, float health, String name1, float intelligence1, float strength1) {
-        super(name, intelligence, strength, health);
-        this.name = name1;
-        this.intelligence = intelligence1;
-        this.strength = strength1;
+    public Monster(String name, float intelligence, float strength) {
+        super(name, intelligence, strength);
+        this.name = name;
+        this.intelligence = intelligence;
+        this.strength = strength;
     }
 
     public boolean dead() {

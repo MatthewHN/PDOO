@@ -32,12 +32,15 @@ public class Player extends LabyrinthCharacter {
         this.name = "Player # " + number;
     }*/
 
-    public Player(String name, float intelligence, float strength, float health) {
-        super(name, intelligence, strength, health);
+    public Player(String name,float intelligence, float strength) {
+        super(name, intelligence, strength);
+
+        this.weapons = new ArrayList<>(MAX_WEAPONS);
+        this.shields = new ArrayList<>(MAX_SHIELDS);
     }
 
     public Player(Player other) {
-        super(other.name,other.intelligence,other.strength,other.health);
+        super(other.intelligence,other.strength,other.health);
     }
 
     public void copyFrom(Player other){
