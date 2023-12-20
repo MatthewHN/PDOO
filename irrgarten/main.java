@@ -8,7 +8,7 @@ import org.w3c.dom.Text;
 
 public class main {
     private TextUI ui;
-    //rivate UI ui;
+    //private UI ui;
     public static void main(String[] args) {
 
         // Crear el juego, la vista y el controlador
