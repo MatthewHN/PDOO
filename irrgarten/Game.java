@@ -42,7 +42,7 @@ public class Game {
     public boolean nextStep(Directions preferredDirections){
         boolean dead = this.currentPlayer.dead();
         if (!dead) {
-            Directions direction = this.actualDirection(preferredDirections);
+            Directions direction = this.actualDirection(Dice.nextStep(preferredDirections,labyrinth.validMoves(this.currentPlayer.getRow(),this.currentPlayer.getCol()),this.currentPlayer.getIntelligence()));
 
             if (direction != preferredDirections) {
                 this.logPlayerNoOrders();
@@ -146,6 +146,8 @@ public class Game {
 
         if (resurrect){
             this.currentPlayer.resurrect();
+            FuzzyPlayer fuzzyPlayer = new FuzzyPlayer(currentPlayer);
+            this.currentPlayer = fuzzyPlayer;
             this.logResurrected();
         }
         else{

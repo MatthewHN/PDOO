@@ -18,7 +18,13 @@ public class CombatElement {
      * Método abstracto para producir un efecto.
      * @return El valor del efecto producido.
      */
-    protected float produceEffect(){return 0;}
+    protected float produceEffect(){
+        if (uses > 0) {
+            uses--;
+            return effect;
+        } else
+            return 0;
+    }
 
     /**
      * Descarta el elemento de combate cuando se agotan los usos.
