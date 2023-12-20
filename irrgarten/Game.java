@@ -9,7 +9,7 @@ public class Game {
     private String log;
     private ArrayList<Monster> monsters;
     private ArrayList<Player> players;
-    private Player currentPlayer = new Player("Jugador 1",Dice.randomIntelligence(),Dice.randomStrength());
+    private Player currentPlayer = new Player((char) 1,Dice.randomIntelligence(),Dice.randomStrength());
     private Labyrinth labyrinth = new Labyrinth(5,10,4,9);
 
     public Game(int nplayers){
@@ -20,7 +20,7 @@ public class Game {
         // Crear y añadir jugadores
         for (int i = 0; i < nplayers; i++) {
             char playerNumber = (char) ('0' + i);
-            players.add(new Player("Player: ", Dice.randomIntelligence(), Dice.randomStrength()));
+            players.add(new Player(playerNumber, Dice.randomIntelligence(), Dice.randomStrength()));
         }
         // Determinar quién comienza y establecer el jugador actual
         currentPlayerIndex = Dice.whoStarts(nplayers);

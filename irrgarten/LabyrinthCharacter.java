@@ -5,17 +5,15 @@ public abstract class LabyrinthCharacter{
     private String name;
     private float intelligence;
     private float strength;
-    private float health;
+    float health;
     private int row;
     private int col;
 
-    public LabyrinthCharacter(float intelligence, float strength, float health){
+    public LabyrinthCharacter(String name,float intelligence, float strength, float health){
         this.name = name;
         this.intelligence = intelligence;
         this.strength = strength;
         this.health = health;
-        this.row = row;
-        this.col = col;
     }
 
     public LabyrinthCharacter(LabyrinthCharacter other){

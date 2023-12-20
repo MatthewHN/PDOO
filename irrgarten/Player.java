@@ -7,11 +7,7 @@ public class Player extends LabyrinthCharacter {
     private static final int MAX_SHIELDS = 3;
     private static final int INITIAL_HEALTH = 10;
     private static final int HITS2LOSE = 3;
-    private String name;
     private char number;
-    private float intelligence;
-    private float strength;
-    private float health;
     private int row;
     private int col;
     private int consecutiveHits = 0;
@@ -32,15 +28,15 @@ public class Player extends LabyrinthCharacter {
         this.name = "Player # " + number;
     }*/
 
-    public Player(String name,float intelligence, float strength) {
-        super(name, intelligence, strength);
-
+    public Player(char number,float intelligence, float strength) {
+        super("Player: " + number,intelligence,strength,INITIAL_HEALTH);
+        this.number = number;
         this.weapons = new ArrayList<>(MAX_WEAPONS);
         this.shields = new ArrayList<>(MAX_SHIELDS);
     }
 
     public Player(Player other) {
-        super(other.intelligence,other.strength,other.health);
+        super("Player: " + other.number, other.getStrength(), other.getHealth());
     }
 
     public void copyFrom(Player other){
@@ -50,7 +46,7 @@ public class Player extends LabyrinthCharacter {
     public void resurrect() {
         this.weapons.clear(); // Hace que la lista de armas sea una lista vacía
         this.shields.clear(); // Hace que la lista de escudos sea una lista vacía
-        this.health = INITIAL_HEALTH; // Restablece la salud al nivel inicial
+        this.setHealth(INITIAL_HEALTH); // Restablece la salud al nivel inicial
         resetHits(); // Restablece el número de golpes consecutivos a cero
     }
 
@@ -68,7 +64,7 @@ public class Player extends LabyrinthCharacter {
     }
 
     public String getName() {
-        return this.name;
+        return "Player: " + number;
     }
 
     public void setPos(int row, int col) {
@@ -78,7 +74,7 @@ public class Player extends LabyrinthCharacter {
     }
 
     public boolean dead() {
-        return this.health <= 0;
+        return this.getHealth() <= 0;
     }
 
     public Directions move(Directions direction, Directions[] validMoves) {
@@ -101,7 +97,7 @@ public class Player extends LabyrinthCharacter {
 
     public float attack() {
         // Sumar la fuerza del jugador y el total aportado por sus armas
-        return this.strength + sumWeapons();
+        return this.getStrength() + sumWeapons();
     }
 
     public boolean defend(float receivedAttack) {
@@ -127,10 +123,9 @@ public class Player extends LabyrinthCharacter {
 
     public String toString() {
 
-        return "Player{name='" + name +
-                "', number=" + number +
-                ", intelligence=" + intelligence +
-                ", strength=" + strength +
+        return "Player{name='" + number +
+                ", intelligence=" + getIntelligence() +
+                ", strength=" + getStrength() +
                 ", health=" + health +
                 ", row=" + row +
                 ", col=" + col +
@@ -205,7 +200,7 @@ public class Player extends LabyrinthCharacter {
 
     private float defensiveEnergy() {
 
-        return this.intelligence + sumShields();
+        return this.getIntelligence() + sumShields();
     }
 
     private boolean manageHit(float receivedAttack) {
