@@ -70,7 +70,6 @@ public class Player extends LabyrinthCharacter {
     public void setPos(int row, int col) {
         this.row = row;
         this.col = col;
-
     }
 
     public boolean dead() {
@@ -106,15 +105,17 @@ public class Player extends LabyrinthCharacter {
 
     public void receiveReward() {
         int wReward = Dice.weaponsReward();
+        WeaponCardDeck mazo = new WeaponCardDeck();
         for (int i=0; i < wReward; i++){
-            Weapon wnew = newWeapon();
-            receiveWeapon(wnew);
+            mazo.addCard(newWeapon());
+            receiveWeapon(mazo.nextCard());
         }
 
         int sReward = Dice.shieldsReward();
+        ShieldCardDeck mazoes = new ShieldCardDeck();
         for (int i=0; i < sReward; i++){
-            Shield snew = newShield();
-            receiveShield(snew);
+            mazoes.addCard(newShield());
+            receiveShield(mazoes.nextCard());
         }
 
         int extraHealth = Dice.healthReward();
@@ -232,6 +233,5 @@ public class Player extends LabyrinthCharacter {
     private void incConsecutiveHits() {
         this.consecutiveHits++;
     }
-
 
 }

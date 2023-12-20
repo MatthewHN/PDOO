@@ -9,13 +9,13 @@ public class TextUI {
     
     private static Scanner in = new Scanner(System.in);
     
-    private char readChar() {
+    private static char readChar() {
         String s = in.nextLine();     
         return s.charAt(0);
     }
     
 
-    public Directions nextMove() {
+    public static Directions nextMove() {
         System.out.print("Where? ");
         
         Directions direction = Directions.DOWN;
@@ -49,7 +49,7 @@ public class TextUI {
         return direction;
     }
     
-    public void showGame(GameState gameState) {
+    public static void showGame(GameState gameState) {
         // Plasmar la información del estado del juego en la consola
         System.out.println(gameState.toString());
     }

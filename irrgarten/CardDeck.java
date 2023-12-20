@@ -15,9 +15,7 @@ public class CardDeck<T> {
     }
 
     // Método para ser sobrescrito en subclases, añade cartas al mazo
-    protected void addCards() {
-        // Implementación específica en subclases
-    }
+    protected void addCards() {}
 
     public T nextCard() {
         if (cardDeck.isEmpty()) {

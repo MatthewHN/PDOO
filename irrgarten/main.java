@@ -1,12 +1,14 @@
 package irrgarten;
 
 import irrgarten.UI.TextUI;
+import irrgarten.UI.UI;
 import irrgarten.controller.Controller;
 import org.w3c.dom.Text;
 
 
 public class main {
     private TextUI ui;
+    //rivate UI ui;
     public static void main(String[] args) {
 
         // Crear el juego, la vista y el controlador

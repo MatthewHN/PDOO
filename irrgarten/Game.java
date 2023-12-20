@@ -9,18 +9,24 @@ public class Game {
     private String log;
     private ArrayList<Monster> monsters;
     private ArrayList<Player> players;
+    private ArrayList<FuzzyPlayer> fuzzyplayer;
     private Player currentPlayer = new Player((char) 1,Dice.randomIntelligence(),Dice.randomStrength());
     private Labyrinth labyrinth = new Labyrinth(5,10,4,9);
 
     public Game(int nplayers){
         // Inicializar la lista de jugadores y monstruos
         players = new ArrayList<>();
+        fuzzyplayer = new ArrayList<>();
         monsters = new ArrayList<>();
         log = ""; // Inicializar el registro de eventos
         // Crear y añadir jugadores
         for (int i = 0; i < nplayers; i++) {
             char playerNumber = (char) ('0' + i);
             players.add(new Player(playerNumber, Dice.randomIntelligence(), Dice.randomStrength()));
+        }
+        for (int i = 0; i < nplayers; i++) {
+            char playerNumber = (char) ('0' + i);
+            fuzzyplayer.add(new FuzzyPlayer(players.get(i)));
         }
         // Determinar quién comienza y establecer el jugador actual
         currentPlayerIndex = Dice.whoStarts(nplayers);
@@ -156,22 +162,22 @@ public class Game {
     }
 
     private void logResurrected(){
-        log += currentPlayer.getName() + " ha resucitado.\n";
+        log = currentPlayer.getName() + " ha resucitado.\n";
     }
 
     private void logPlayerSkipTurn(){
-        log += currentPlayer.getName() + " ha perdido el turno por estar muerto.\n";
+        log = currentPlayer.getName() + " ha perdido el turno por estar muerto.\n";
     }
 
     private void logPlayerNoOrders(){
-        log += currentPlayer.getName() + " no ha seguido las instrucciones del jugador humano (no fue posible).\n";
+        log = currentPlayer.getName() + " no ha seguido las instrucciones del jugador humano (no fue posible).\n";
     }
 
     private void logNoMonster(){
-        log += currentPlayer.getName() + " se ha movido a una celda vacía o no le ha sido posible moverse.\n";
+        log = currentPlayer.getName() + " se ha movido a una celda vacía o no le ha sido posible moverse.\n";
     }
 
     private void logRounds(int rounds, int max){
-        log += "Se han producido " + rounds + " de " + max + " rondas de combate.\n";
+        log = "Se han producido " + rounds + " de " + max + " rondas de combate.\n";
     }
 }
