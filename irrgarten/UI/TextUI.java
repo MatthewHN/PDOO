@@ -5,7 +5,7 @@ import irrgarten.GameState;
 import java.util.Scanner;
 
 
-public class TextUI {
+public class TextUI{
     
     private static Scanner in = new Scanner(System.in);
     
@@ -15,7 +15,7 @@ public class TextUI {
     }
     
 
-    public static Directions nextMove() {
+    public Directions nextMove() {
         System.out.print("Where? ");
         
         Directions direction = Directions.DOWN;
@@ -49,7 +49,7 @@ public class TextUI {
         return direction;
     }
     
-    public static void showGame(GameState gameState) {
+    public void showGame(GameState gameState) {
         // Plasmar la información del estado del juego en la consola
         System.out.println(gameState.toString());
     }
